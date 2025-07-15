@@ -20,29 +20,29 @@ func main() {
 
 	defer db.Close()
 
-	// err = controllers.ReadUser(db);
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err = controllers.ReadUser(db);
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	err = controllers.ReadUserById(db, 7)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// err = controllers.AddUser(db);  
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err = controllers.AddUser(db);  
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// err = controllers.DelUser(db, 22)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err = controllers.DelUser(db, 22)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// err = controllers.UpdateDataUser(db, "LUCY", "LUCZ", 5)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err = controllers.UpdateDataUser(db, "LUCY", "LUCZ", 5)
+	if err != nil {
+		log.Fatal(err)
+	}
 	
 }
