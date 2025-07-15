@@ -1,7 +1,7 @@
 ### TODO Checklist
 
 - [x] Create database
-- [x] Create table && add data to database
+- [x] Create table, add data to database
 
 ---
 
