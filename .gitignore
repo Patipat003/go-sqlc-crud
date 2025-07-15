@@ -1,0 +1,22 @@
+# Go build output
+*.exe
+*.out
+*.test
+
+# Temp
+/tmp/
+*.log
+
+# Air
+.air.toml
+tmp/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+.DS_Store
+
+.env

@@ -1,0 +1,58 @@
+ท่าเดิม scan กับ query ต้องเท่ากัน (field)
+
+func main() {
+
+	db, err := sql.Open("postgres", "postgresql://postgres:1234@localhost:5432/testdb?sslmode=disable")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer db.Close()
+
+	query := "SELECT id, first_name FROM mockdata"
+	
+	rows, err := db.Query(query)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer rows.Close()
+	
+	for rows.Next() {
+		id := 0
+		first_name := ""
+		err = rows.Scan(&id, &first_name)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(id, first_name)
+	}
+	
+}
+
+--------------------------------------------------
+
+ท่าใหม่ ใช้ sqlc สั้นกว่า 
+
+func main() {
+  db, err := sql.Open("postgres", "postgresql://postgres:1234@localhost:5432/testdb?sslmode=disable")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer db.Close()
+  
+  queries := 	generate.New(db)
+
+	user, err := queries.GetAllUsers(context.Background())
+    if err != nil {
+        log.Fatal(err)
+    }
+
+		for _, u := range user {
+
+			fmt.Println("User:", u.FirstName, u.LastName)
+		}
+}
